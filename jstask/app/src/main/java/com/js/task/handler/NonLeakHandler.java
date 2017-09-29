@@ -6,11 +6,11 @@ import android.os.Message;
 
 import java.lang.ref.WeakReference;
 
-public class JSHandler extends Handler {
+public class NonLeakHandler extends Handler {
     private WeakReference<Activity> ref;
-    private JSHandlerCallback callback;
+    private NonLeakHandlerCallback callback;
 
-    public JSHandler(Activity act, JSHandlerCallback callback) {
+    public NonLeakHandler(Activity act, NonLeakHandlerCallback callback) {
         ref = new WeakReference<>(act);
         this.callback = callback;
     }

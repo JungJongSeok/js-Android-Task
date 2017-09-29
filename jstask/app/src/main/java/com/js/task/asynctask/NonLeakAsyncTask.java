@@ -5,11 +5,11 @@ import android.os.AsyncTask;
 
 import java.lang.ref.WeakReference;
 
-public  class JSAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result>{
+public  class NonLeakAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result>{
     private WeakReference<Activity> ref;
-    private JSAsyncTaskCallback<Params, Progress, Result> callback;
+    private NonLeakAsyncTaskCallback<Params, Progress, Result> callback;
 
-    public JSAsyncTask(Activity act, JSAsyncTaskCallback<Params, Progress, Result> callback) {
+    public NonLeakAsyncTask(Activity act, NonLeakAsyncTaskCallback<Params, Progress, Result> callback) {
         ref = new WeakReference<>(act);
         this.callback = callback;
     }
