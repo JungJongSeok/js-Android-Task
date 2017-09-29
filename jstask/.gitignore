@@ -24,7 +24,6 @@ bin/
 gen/
 
 # Gradle files
-.gradle/
 build/
 /*/build/
 
@@ -38,9 +37,6 @@ proguard/
 *.log
 
 ### Gradle ###
-.gradle
-gradle/wrapper/*
-gradlew.bat
 build/
 
 # Ignore Gradle GUI config
