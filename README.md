@@ -1,7 +1,7 @@
 # JS-Android-Utils
 ![ReadMe](https://img.shields.io/github/license/JungJongSeok/js-android-task)
 
-##Change strong references to weak references
+## Change strong references to weak references
 
 # Function
 ### AsyncTask to NonLeakAsyncTask
