@@ -25,9 +25,11 @@
                 return null;
             }
         }; <- Memory leak
+```
 
 -> For device performance
 
+```
         new NonLeakAsyncTask(context, new NonLeakAsyncTaskCallback() {
             @Override
             public void onPreExecute() {
@@ -54,11 +56,14 @@
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
+                doSomeThing();
             }
         }; <- Memory leck
+```
 
 -> For device performance
 
+```
         new NonLeakHandler(context, new NonLeakHandlerCallback() {
             @Override
             public void handleMessage(Message message) {
