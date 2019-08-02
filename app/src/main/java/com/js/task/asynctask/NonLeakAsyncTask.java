@@ -1,23 +1,23 @@
 package com.js.task.asynctask;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.lang.ref.WeakReference;
 
-public  class NonLeakAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result>{
-    private WeakReference<Activity> ref;
+public class NonLeakAsyncTask<Params, Progress, Result> extends AsyncTask<Params, Progress, Result> {
+    private WeakReference<Context> ref;
     private NonLeakAsyncTaskCallback<Params, Progress, Result> callback;
 
-    public NonLeakAsyncTask(Activity act, NonLeakAsyncTaskCallback<Params, Progress, Result> callback) {
-        ref = new WeakReference<>(act);
+    public NonLeakAsyncTask(Context context, NonLeakAsyncTaskCallback<Params, Progress, Result> callback) {
+        ref = new WeakReference<>(context);
         this.callback = callback;
     }
 
     @Override
     protected void onPreExecute() {
-        Activity act = ref.get();
-        if (act != null && callback != null) {
+        Context context = ref.get();
+        if (context != null && callback != null) {
             super.onPreExecute();
             callback.onPreExecute();
         }
@@ -25,8 +25,8 @@ public  class NonLeakAsyncTask<Params, Progress, Result> extends AsyncTask<Param
 
     @Override
     protected void onPostExecute(Result result) {
-        Activity act = ref.get();
-        if (act != null && callback != null) {
+        Context context = ref.get();
+        if (context != null && callback != null) {
             super.onPostExecute(result);
             callback.onPostExecute(result);
         }
@@ -34,8 +34,8 @@ public  class NonLeakAsyncTask<Params, Progress, Result> extends AsyncTask<Param
 
     @Override
     protected void onProgressUpdate(Progress[] progresses) {
-        Activity act = ref.get();
-        if (act != null && callback != null) {
+        Context context = ref.get();
+        if (context != null && callback != null) {
             super.onProgressUpdate(progresses);
             callback.onProgressUpdate(progresses);
         }
@@ -43,8 +43,8 @@ public  class NonLeakAsyncTask<Params, Progress, Result> extends AsyncTask<Param
 
     @Override
     protected Result doInBackground(Params[] params) {
-        Activity act = ref.get();
-        if (act != null && callback != null) {
+        Context context = ref.get();
+        if (context != null && callback != null) {
             return callback.doInBackground(params);
         }
         return null;
